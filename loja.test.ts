@@ -92,7 +92,8 @@ Bai 1 - Mun 1 - E1
 CEP:11111-111 Tel (11) 1111-1111
 Obs 1
 CNPJ: 11.111.111/1111-11
-IE: 123456789`
+IE: 123456789
+`
 
 const TEXTO_ESPERADO_SEM_NUMERO_SEM_COMPLEMENTO_SEM_BAIRRO: string = `Loja 1
 Log 1, s/n
@@ -100,8 +101,17 @@ Mun 1 - E1
 CEP:11111-111 Tel (11) 1111-1111
 Obs 1
 CNPJ: 11.111.111/1111-11
-IE: 123456789`
+IE: 123456789
+`
 
+const TEXTO_ESPERADO_EXERCICIO_02_CUSTOMIZADO : string = `Boa vista Flores
+Rua Jardim Peres, 122 EUC F30/31/4
+Centro - Monteiro - PB
+CEP:58500000 Tel (99) 9999-9999
+Loja 122 (PDB)
+CNPJ: 22.300.551/0110-56
+IE: 432.118.667.777
+`
 
 test('Loja Completa', () => {
   let lojaCompleta: Loja = new Loja(NOME_LOJA, LOGRADOURO, NUMERO, COMPLEMENTO,
@@ -219,25 +229,23 @@ test('Número zero, complemento e bairro vazios', () => {
 test('Exercício 2 - customizado', () => {
 
   // Defina seus próprios valores para as variáveis a seguir
-  let nome_loja = "";
-  let logradouro = "";
-  let numero = 0;
-  let complemento = "";
-  let bairro = "";
-  let municipio = "";
-  let estado = "";
-  let cep = "";
-  let telefone = "";
-  let observacao = "";
-  let cnpj = "";
-  let inscricao_estadual = "";
+  let nome_loja = "Boa vista Flores";
+  let logradouro = "Rua Jardim Peres";
+  let numero = 122;
+  let complemento = "EUC F30/31/4";
+  let bairro = "Centro";
+  let municipio = "Monteiro";
+  let estado = "PB";
+  let cep = "58500000";
+  let telefone = "(99) 9999-9999";
+  let observacao = "Loja 122 (PDB)";
+  let cnpj = "22.300.551/0110-56";
+  let inscricao_estadual = "432.118.667.777";
 
   let loja_customizada: Loja = new Loja(nome_loja, logradouro, numero,
     complemento, bairro, municipio, estado, cep, telefone, observacao, cnpj,
     inscricao_estadual);
 
   //E atualize o texto esperado abaixo
-  expect(loja_customizada.dados_loja()).toBe(
-      `
-`);
+  expect(loja_customizada.dados_loja()).toBe(TEXTO_ESPERADO_EXERCICIO_02_CUSTOMIZADO);
 });
